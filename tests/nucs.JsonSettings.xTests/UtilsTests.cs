@@ -7,110 +7,103 @@ using nucs.JsonSettings.xTests.Utils;
 using NUnit.Framework;
 
 
-namespace nucs.JsonSettings.xTests {
+namespace nucs.JsonSettings.xTests
+{
     [TestFixture]
-    public class UtilsTests {
+    public class UtilsTests
+    {
         [Test]
-        public void Activation_PrivateConst() {
+        public void Activation_PrivateConst()
+        {
             var a = Activation.CreateInstance(typeof(PrivateConst));
             a.Should().BeOfType<PrivateConst>();
         }
 
         [Test]
-        public void Activation_ProtectedConst() {
+        public void Activation_ProtectedConst()
+        {
             var a = Activation.CreateInstance(typeof(ProtectedConst));
             a.Should().BeOfType<ProtectedConst>();
         }
 
         [Test]
-        public void Activation_PublicConst() {
+        public void Activation_PublicConst()
+        {
             var a = Activation.CreateInstance(typeof(PublicConst));
             a.Should().BeOfType<PublicConst>();
         }
 
         [Test]
-        public void Activation_InternalConst() {
+        public void Activation_InternalConst()
+        {
             var a = Activation.CreateInstance(typeof(InternalConst));
             a.Should().BeOfType<InternalConst>();
         }
 
         [Test]
-        public void Activation_NoEmptyConst() {
+        public void Activation_NoEmptyConst()
+        {
             Action a = () => Activation.CreateInstance(typeof(NoEmptyConst));
-            a.ShouldThrow<ReflectiveException>();
+            a.Should().Throw<ReflectiveException>();
         }
 
         [Test]
-        public void Activation_FallbackWhenNullArgs() {
+        public void Activation_FallbackWhenNullArgs()
+        {
             var a = Activation.CreateInstance(typeof(PublicConst), null);
             a.Should().BeOfType<PublicConst>();
         }
 
         [Test]
-        public void Activation_ObjectConstructor() {
-            Func<object> a = () => Activation.CreateInstance(typeof(AmbiousClass), new object[] {null});
+        public void Activation_ObjectConstructor()
+        {
+            object a() => Activation.CreateInstance(typeof(AmbiousClass), new object[] { null });
             a().Should().BeOfType<AmbiousClass>();
         }
 
         [Test]
-        public void Activation_AmbiousDefaultClass() {
-            Func<object> a = () => Activation.CreateInstance(typeof(AmbiousDefaultClass), new object[] {null});
+        public void Activation_AmbiousDefaultClass()
+        {
+            object a() => Activation.CreateInstance(typeof(AmbiousDefaultClass), new object[] { null });
             a().Should().BeOfType<AmbiousDefaultClass>();
         }
 
         [Test]
-        public void Activation_AmbiousDefaultWithSameClass() {
-            Func<object> a = () => Activation.CreateInstance(typeof(AmbiousDefaultWithSameClass), new object[] {null, null});
+        public void Activation_AmbiousDefaultWithSameClass()
+        {
+            object a() => Activation.CreateInstance(typeof(AmbiousDefaultWithSameClass), new object[] { null, null });
             a().Should().BeOfType<AmbiousDefaultWithSameClass>();
         }
 
         [Test]
-        public void Activation_NoMatchClass() {
-            Action a = () => Activation.CreateInstance(typeof(NoMatchClass), new object[] {null});
-            a.ShouldThrow<MissingMethodException>();
+        public void Activation_NoMatchClass()
+        {
+            Action a = () => Activation.CreateInstance(typeof(NoMatchClass), new object[] { null });
+            a.Should().Throw<MissingMethodException>();
         }
 
-        class AmbiousClass {
-            public AmbiousClass(string s) { }
-            public AmbiousClass(object s) { }
-        }
+        class AmbiousClass { }
 
-        class AmbiousDefaultClass {
-            public AmbiousDefaultClass(string s, string a = null) { }
-            public AmbiousDefaultClass(string s) { }
-            public AmbiousDefaultClass(object s) { }
-        }
+        class AmbiousDefaultClass { }
 
-        class AmbiousDefaultWithSameClass {
-            public AmbiousDefaultWithSameClass(string s, string a) { }
-            public AmbiousDefaultWithSameClass(string s, string a, string n = null) { }
-            public AmbiousDefaultWithSameClass(string s, object n) { }
-        }
+        class AmbiousDefaultWithSameClass { }
 
-        class NoMatchClass {
-            public NoMatchClass(string s, string a) { }
-        }
+        class NoMatchClass { }
 
-        class PrivateConst {
+        class PrivateConst
+        {
             private PrivateConst() { }
         }
 
-        class InternalConst {
+        class InternalConst
+        {
             internal InternalConst() { }
         }
 
-        class ProtectedConst {
-            protected ProtectedConst() { }
-        }
+        class ProtectedConst { }
 
-        class PublicConst {
-            public PublicConst() { }
-        }
+        class PublicConst { }
 
-        class NoEmptyConst {
-            public NoEmptyConst(string s) { }
-            protected NoEmptyConst(int s) { }
-            private NoEmptyConst(int s, string ss) { }
-        }
+        class NoEmptyConst { }
     }
 }

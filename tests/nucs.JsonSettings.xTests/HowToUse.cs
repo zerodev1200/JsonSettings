@@ -26,7 +26,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<CasualExampleSettings>(f.FileName);
                 o.SomeProperty.Should().Be("with some value");
-                o.SomeNumeralProperty.ShouldBeEquivalentTo(1);
+                o.SomeNumeralProperty.Should().Be(1);
                 o.SomeClassProperty.Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -44,7 +44,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Configure<CasualExampleSettings>(f.FileName).WithBase64().WithEncryption("SuperPassword").LoadNow();
                 o.SomeProperty.Should().Be("with some value");
-                o.SomeNumeralProperty.ShouldBeEquivalentTo(1);
+                o.SomeNumeralProperty.Should().Be(1);
                 o.SomeClassProperty.Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -61,7 +61,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<CasualExampleSettings>(f.FileName, s => s.WithBase64().WithEncryption("SuperPassword"));
                 o.SomeProperty.Should().Be("with some value");
-                o.SomeNumeralProperty.ShouldBeEquivalentTo(1);
+                o.SomeNumeralProperty.Should().Be(1);
                 o.SomeClassProperty.Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -78,7 +78,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<CasualExampleSettings>(f.FileName, s => s.WithBase64().WithEncryption(set => set.SomeProperty), new object[] {"SuperPassword"});
                 o.SomeProperty.Should().Be("SuperPassword");
-                o.SomeNumeralProperty.ShouldBeEquivalentTo(1);
+                o.SomeNumeralProperty.Should().Be(1);
                 o.SomeClassProperty.Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -95,7 +95,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<SettingsBag>(f.FileName);
                 o["somekey"].Should().Be("with some value");
-                o["someotherkey"].ShouldBeEquivalentTo(1);
+                o["someotherkey"].Should().BeEquivalentTo(1);
                 o["somekeyforclass"].Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -112,7 +112,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<SettingsBag>(f.FileName);
                 o["somekey"].Should().Be("with some value");
-                o["someotherkey"].ShouldBeEquivalentTo(1);
+                o["someotherkey"].Should().BeEquivalentTo(1);
                 o["somekeyforclass"].Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }
@@ -130,7 +130,7 @@ namespace nucs.JsonSettings.xTests {
                 //validate
                 o = JsonSettings.Load<CasualExampleSettings>(f.FileName);
                 o.SomeProperty.Should().Be("with some value");
-                o.SomeNumeralProperty.ShouldBeEquivalentTo(1);
+                o.SomeNumeralProperty.Should().Be(1);
                 o.SomeClassProperty.Should().BeOfType(typeof(SmallClass)).And.Match(obj => (obj as SmallClass).Name == "Small");
             }
         }

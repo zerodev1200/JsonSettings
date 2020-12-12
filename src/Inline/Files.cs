@@ -19,8 +19,6 @@ namespace nucs.JsonSettings {
         public static FileStream AttemptOpenFile(string file, FileMode filemode = FileMode.Open, FileAccess fileaccess = FileAccess.Read, FileShare fileshare = FileShare.None, bool @throw = false) {
             if (string.IsNullOrEmpty(file)) throw new ArgumentException("message", nameof(file));
 
-            FileStream stream = null;
-            
             //if file doesnt exist and filemode won't create one - return null.
             if (File.Exists(file) == false && filemode != FileMode.Create && filemode != FileMode.CreateNew && filemode != FileMode.OpenOrCreate)
                 return null;
@@ -33,7 +31,7 @@ namespace nucs.JsonSettings {
                     Directory.CreateDirectory(parent);
                 
                 return File.Open(file, filemode, fileaccess, fileshare);
-            } catch (IOException e) {
+            } catch (IOException) {
                 //the file is unavailable because it is:
                 //still being written to
                 //or being processed by another thread
@@ -47,13 +45,5 @@ namespace nucs.JsonSettings {
                 return null;
             }
         }
-
-#if NETSTANDARD1_6
-
-        public static void Close(this Stream str) {
-            str.Dispose();
-        }
-
-#endif
     }
 }

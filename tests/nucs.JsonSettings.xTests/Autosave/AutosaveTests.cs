@@ -44,13 +44,13 @@ namespace nucs.JsonSettings.xTests.Autosave {
                 o.AfterSave += destinition => {
                     saved = true;
                 };
-                o.property.ShouldBeEquivalentTo(null);
+                o.Property.Should().BeEquivalentTo(null);
                 Console.WriteLine(File.ReadAllText(rpath));
 
-                o.property = "test";
-                saved.ShouldBeEquivalentTo(true);
+                o.Property = "test";
+                saved.Should().BeTrue();
                 var o2 = JsonSettings.Load<Settings>(f.FileName).EnableAutosave();
-                o2.property.ShouldBeEquivalentTo("test");
+                o2.Property.Should().BeEquivalentTo("test");
                 var jsn = File.ReadAllText(rpath);
                 jsn.Contains("\"test\"").Should().BeTrue();
                 Console.WriteLine(jsn);
@@ -67,7 +67,7 @@ namespace nucs.JsonSettings.xTests.Autosave {
                 };
 
                 o.FileName = "test.jsn";
-                saved.ShouldBeEquivalentTo(false);
+                saved.Should().BeFalse();
             }
         }
 
@@ -75,10 +75,10 @@ namespace nucs.JsonSettings.xTests.Autosave {
         public void AccessingAfterLoadingAndMarkingAutosave() {
             using (var f = new TempfileLife()) {
                 var o = JsonSettings.Load<Settings>(f.FileName).EnableAutosave();
-                o.property.ShouldBeEquivalentTo(null);
-                o.property = "test";
+                o.Property.Should().BeEquivalentTo(null);
+                o.Property = "test";
                 var o2 = JsonSettings.Load<Settings>(f.FileName).EnableAutosave();
-                o2.property.ShouldBeEquivalentTo("test");
+                o2.Property.Should().BeEquivalentTo("test");
             }
         }
 
@@ -89,10 +89,10 @@ namespace nucs.JsonSettings.xTests.Autosave {
                 var o = JsonSettings.Load<InterfacedSettings>(f.FileName).EnableIAutosave<ISettings>();
 
                 Console.WriteLine(File.ReadAllText(rpath));
-                o.property.ShouldBeEquivalentTo(null);
-                o.property = "test";
+                o.Property.Should().BeEquivalentTo(null);
+                o.Property = "test";
                 var o2 = JsonSettings.Load<InterfacedSettings>(f.FileName);
-                o2.property.ShouldBeEquivalentTo("test");
+                o2.Property.Should().BeEquivalentTo("test");
 
                 var jsn = File.ReadAllText(rpath);
                 jsn.Contains("\"test\"").Should().BeTrue();
@@ -101,7 +101,7 @@ namespace nucs.JsonSettings.xTests.Autosave {
         }
 
         public interface ISettings {
-            string property { get; set; }
+            string Property { get; set; }
 
             void Method();
         }
@@ -115,7 +115,7 @@ namespace nucs.JsonSettings.xTests.Autosave {
             /// </summary>
             public override string FileName { get; set; } = "somename.jsn";
 
-            public string property { get; set; }
+            public string Property { get; set; }
 
             public void Method() { }
 
@@ -134,7 +134,7 @@ namespace nucs.JsonSettings.xTests.Autosave {
             /// </summary>
             public override string FileName { get; set; } = "somename.jsn";
 
-            public virtual string property { get; set; }
+            public virtual string Property { get; set; }
 
             public virtual void Method() { }
 
@@ -153,7 +153,7 @@ namespace nucs.JsonSettings.xTests.Autosave {
             /// </summary>
             public override string FileName { get; set; } = "somename.jsn";
 
-            public virtual string property { get; set; }
+            public virtual string Property { get; set; }
 
             public virtual void Method() { }
 

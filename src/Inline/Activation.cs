@@ -27,11 +27,7 @@ namespace nucs.JsonSettings {
             var prv = ctrs.FirstOrDefault(c => c.IsAssembly ||c.IsFamily || c.IsPrivate); //check protected/internal/private constructor
             if (prv == null)
                 throw new ReflectiveException($"Type {t.FullName} does not have empty constructor (public or private)");
-#if NETSTANDARD1_6
             return prv.Invoke(null);
-#else
-            return prv.Invoke(null);
-#endif
         }
 
         public static object CreateInstance(this Type t, object[] args) {

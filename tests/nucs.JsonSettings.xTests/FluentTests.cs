@@ -15,72 +15,72 @@ namespace nucs.JsonSettings.xTests {
         [Test]
         public void Fluent_WithFileNameAndEncryptionAndAutosave() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).WithEncryption("qweqwe").LoadNow().EnableAutosave();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).WithEncryption("qweqwe").LoadNow().EnableAutosave();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = gen();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
         [Test]
         public void Fluent_WithBas64() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).WithBase64().LoadNow().EnableAutosave();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).WithBase64().LoadNow().EnableAutosave();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = gen();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
         [Test]
         public void Fluent_WithEncryptionAndWithBas64() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).WithEncryption("qweqwe").WithBase64().LoadNow().EnableAutosave();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).WithEncryption("qweqwe").WithBase64().LoadNow().EnableAutosave();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = gen();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
         [Test]
         public void Fluent_WithhBas64AndEncryption() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).WithBase64().WithEncryption("qweqwe").LoadNow().EnableAutosave();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).WithBase64().WithEncryption("qweqwe").LoadNow().EnableAutosave();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = gen();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
         [Test]
         public void Fluent_SimpleLoad() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).LoadNow().EnableAutosave();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).LoadNow().EnableAutosave();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = gen();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
         [Test]
         public void Fluent_SimpleSave() {
             using (var f = new TempfileLife()) {
-                Func<SettingsBag> gen = () => new SettingsBag().WithFileName((string) f).LoadNow();
+                SettingsBag gen() => new SettingsBag().WithFileName((string)f).LoadNow();
                 var o = gen();
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
@@ -162,7 +162,7 @@ namespace nucs.JsonSettings.xTests {
             using (var f = new TempfileLife()) {
                 //validate
                 Action act = () => JsonSettings.Construct<SettingsBag>(f.FileName).LoadNow().EnableAutosave();
-                act.ShouldNotThrow("LoadNow handles non existent folders and files.");
+                act.Should().NotThrow("LoadNow handles non existent folders and files.");
             }
         }
         [Test]
@@ -170,7 +170,7 @@ namespace nucs.JsonSettings.xTests {
             using (var f = new TempfileLife( @"\MoalemYar\"+Path.GetRandomFileName())) {
                 //validate
                 Action act = () => JsonSettings.Construct<SettingsBag>(f.FileName).LoadNow().EnableAutosave();
-                act.ShouldNotThrow("LoadNow handles non existent folders and files.");
+                act.Should().NotThrow("LoadNow handles non existent folders and files.");
             }
         }
         class FilterFileNameSettings : JsonSettings {

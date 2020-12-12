@@ -22,7 +22,7 @@ namespace nucs.JsonSettings.xTests {
                 var o2 = JsonSettings.Load<SettingsBag>(f.FileName);
                 var ret = o2["prop"];
                 ret.Should().BeOfType<List<string>>();
-                ((List<string>)ret).Count.ShouldBeEquivalentTo(2);
+                ((List<string>)ret).Count.Should().Be(2);
             }
         }
 
@@ -34,14 +34,14 @@ namespace nucs.JsonSettings.xTests {
 
         class ModuleLoadingSttings : JsonSettings {
             public override string FileName { get; set; }
-            public string someprop { get; set; }
+            public string Someprop { get; set; }
             public ModuleLoadingSttings() { }
             public ModuleLoadingSttings(string fileName) : base(fileName) { }
         }
 
         class FilenamelessSettings : JsonSettings {
             public override string FileName { get; set; } = null;
-            public string someprop { get; set; }
+            public string Someprop { get; set; }
 
             public FilenamelessSettings() { }
             public FilenamelessSettings(string fileName) : base(fileName) { }

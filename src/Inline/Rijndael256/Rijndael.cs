@@ -177,8 +177,8 @@ namespace Rijndael256
         {
             byte[] ReadAllBytes(Stream instream)
             {
-                if (instream is MemoryStream)
-                    return ((MemoryStream)instream).ToArray();
+                if (instream is MemoryStream stream)
+                    return stream.ToArray();
 
                 using (var memoryStream = new MemoryStream())
                 {
@@ -262,7 +262,7 @@ namespace Rijndael256
         /// <returns>The symmetric encryptor.</returns>
         public static ICryptoTransform CreateEncryptor(string password, byte[] iv, KeySize keySize)
         {
-#if NET452 || NET46 || NET461 || NET462 || NET47
+#if NET47 || NET48
             var rijndael = new RijndaelManaged { Mode = BlockCipherMode };
 #else
             var rijndael = Aes.Create();
@@ -280,7 +280,7 @@ namespace Rijndael256
         /// <returns>The symmetric decryptor.</returns>
         public static ICryptoTransform CreateDecryptor(string password, byte[] iv, KeySize keySize)
         {
-#if NET452 || NET46 || NET461 || NET462 || NET47
+#if NET47 || NET48
             var rijndael = new RijndaelManaged { Mode = BlockCipherMode };
 #else
             var rijndael = Aes.Create();

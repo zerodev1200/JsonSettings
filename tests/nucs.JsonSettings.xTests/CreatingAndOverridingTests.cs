@@ -21,7 +21,7 @@ namespace nucs.JsonSettings.xTests {
 
                 File.Exists(f).Should().BeTrue();
                 var o2 = JsonSettings.Load<Settings>(f);
-                o2.Str.ShouldBeEquivalentTo("lol");
+                o2.Str.Should().BeEquivalentTo("lol");
             }
         }
 

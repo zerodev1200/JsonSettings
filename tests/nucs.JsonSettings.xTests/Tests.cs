@@ -18,8 +18,8 @@ namespace nucs.JsonSettings.xTests {
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = JsonSettings.Configure<SettingsBag>().WithEncryption("swag").WithFileName(f.FileName).LoadNow();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
@@ -32,8 +32,8 @@ namespace nucs.JsonSettings.xTests {
                 o["loly"] = 2;
                 o.Save();
                 var x = JsonSettings.Configure<SettingsBag>().WithEncryption("swag").WithFileName(f.FileName).LoadNow();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
@@ -41,14 +41,14 @@ namespace nucs.JsonSettings.xTests {
         public void SettingsBag_Passless() {
             using (var f = new TempfileLife()) {
                 var o = JsonSettings.Configure<SettingsBag>().WithEncryption((string)null).WithFileName(f.FileName).LoadNow();
-                ((RijndaelModule) o.Modulation.Modules[0]).Password.ShouldBeEquivalentTo(SecureStringExt.EmptyString);
+                ((RijndaelModule) o.Modulation.Modules[0]).Password.Should().BeEquivalentTo(SecureStringExt.EmptyString);
                 o.Autosave = false;
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 o.Save();
                 var x = JsonSettings.Configure<SettingsBag>().WithEncryption((string)null).WithFileName(f.FileName).LoadNow();
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
@@ -60,7 +60,7 @@ namespace nucs.JsonSettings.xTests {
                 o["loly"] = 2;
                 o.Save();
                 Action func = () => JsonSettings.Configure<SettingsBag>().WithEncryption("invalidpass").WithFileName(f.FileName).LoadNow();
-                func.ShouldThrow<JsonSettingsException>("Password is invalid").Where(e => e.Message.StartsWith("Password", StringComparison.OrdinalIgnoreCase));
+                func.Should().Throw<JsonSettingsException>("Password is invalid").Where(e => e.Message.StartsWith("Password", StringComparison.OrdinalIgnoreCase));
             }
         }
 
@@ -73,8 +73,8 @@ namespace nucs.JsonSettings.xTests {
                 o["loly"] = 2;
                 o.Save();
                 var x = JsonSettings.Load<SettingsBag>(f);
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
@@ -86,8 +86,8 @@ namespace nucs.JsonSettings.xTests {
                 o["lol"] = "xoxo";
                 o["loly"] = 2;
                 var x = JsonSettings.Load<SettingsBag>(f);
-                x["lol"].ShouldBeEquivalentTo("xoxo");
-                x["loly"].ShouldBeEquivalentTo(2);
+                x["lol"].Should().BeEquivalentTo("xoxo");
+                x["loly"].Should().BeEquivalentTo(2);
             }
         }
 
@@ -96,7 +96,7 @@ namespace nucs.JsonSettings.xTests {
             using (var f = new TempfileLife()) {
                 var n = new FilterFileNameSettings(f);
                 n.Save();
-                File.ReadAllText(n.FileName).IndexOf("FileName", StringComparison.OrdinalIgnoreCase).ShouldBeEquivalentTo(-1);
+                File.ReadAllText(n.FileName).IndexOf("FileName", StringComparison.OrdinalIgnoreCase).Should().Be(-1);
             }
         }
 
@@ -112,7 +112,7 @@ namespace nucs.JsonSettings.xTests {
                 o.someprop = "1";
                 o.Save();
                 var x = JsonSettings.Load<ModuleLoadingSttings>(f);
-                x.someprop.ShouldBeEquivalentTo("1");
+                x.someprop.Should().BeEquivalentTo("1");
             }
         }
 
@@ -152,7 +152,6 @@ namespace nucs.JsonSettings.xTests {
             public MySettings(string fileName) : base(fileName) { }
 
             public void test() {
-                var settings1 = JsonSettings.Load<MySettings>(); //Load from FileName value in a newly constructed MySettings.
                 var settings = JsonSettings.Load<MySettings>("C:/folder/somefile.extension"); //Load from specific location.
                 settings.SomeProperty = "somevalue";
                 settings.Save();

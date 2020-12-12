@@ -402,7 +402,7 @@ namespace nucs.JsonSettings {
         /// <returns>A freshly new object or <paramref name="instance"/>.</returns>
         public static T Configure<T>(T instance, string filename = "<DEFAULT>") where T : ISavable {
             JsonSettings o = (JsonSettings) ((ISavable) instance ?? (T) typeof(T).CreateInstance());
-            FluentJsonSettings._withFileName(o, filename, true);
+            FluentJsonSettings.WithFileName(o, filename, true);
             o.EnsureConfigured();
             return (T) (object) o;
         }

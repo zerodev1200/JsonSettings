@@ -5,13 +5,13 @@ using nucs.JsonSettings.Modulation;
 
 namespace nucs.JsonSettings.Fluent {
     public static class FluentJsonSettings {
-        internal static T _withFileName<T>(this T _instance, string filename, bool throwless = false) where T : JsonSettings {
+        internal static T WithFileName<T>(this T _instance, string filename, bool throwless = false) where T : JsonSettings {
             _instance.FileName = JsonSettings.ResolvePath(_instance, filename, throwless);
             return _instance;
         }
 
         public static T WithFileName<T>(this T _instance, string filename) where T : JsonSettings {
-            return _withFileName(_instance, filename);
+            return WithFileName(_instance, filename);
         }
 
         public static T WithFileName<T>(this T _instance, FileInfo filename) where T : JsonSettings {
