@@ -1,15 +1,16 @@
-# JsonSettings
-[![Nuget downloads](https://img.shields.io/nuget/v/Nucs.JsonSettings.svg)](https://www.nuget.org/packages/nucs.JsonSettings/)
-[![NuGet](https://img.shields.io/nuget/dt/Nucs.JsonSettings.svg)](https://github.com/Nucs/JsonSettings)
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Nucs/JsonSettings/blob/master/LICENSE)
+# JsonSettings.Fork
+[![Nuget downloads](https://img.shields.io/nuget/v/Nucs.JsonSettings.Fork.svg)](https://www.nuget.org/packages/nucs.JsonSettings.Fork/)
+[![NuGet](https://img.shields.io/nuget/dt/Nucs.JsonSettings.Fork.svg)](https://github.com/Nucs/JsonSettings.Fork)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Nucs/JsonSettings.Fork/blob/master/LICENSE)
 
 Easiest way you'll ever write settings for your app.
+For .NetFramework4.7 4.8 .NETCore3.1 .NET5 
 * Modular
 * One Liner
 * Abstract
 ### Install
 ```
-PM> Install-Package nucs.JsonSettings
+PM> Install-Package nucs.JsonSettings.Fork
 ```
 ### Getting Started
 See https://github.com/Nucs/JsonSettings/wiki/<br>
