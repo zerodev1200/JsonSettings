@@ -3,17 +3,17 @@
   <PropertyGroup>
 	<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <TargetFrameworks>net47;net48;net5.0;netcoreapp3.1</TargetFrameworks>
-    <AssemblyVersion>1.0.7.0</AssemblyVersion>
-    <FileVersion>1.0.7.0</FileVersion>
+    <AssemblyVersion>1.0.8.0</AssemblyVersion>
+    <FileVersion>1.0.8.0</FileVersion>
     <Version>1.0.8</Version>
-    <Authors>Nucs / Eli Belash</Authors>
-    <Company>Ebby Technology</Company>
+    <Authors>z</Authors>
+    <Company></Company>
 	<Summary>Easiest way you'll ever write settings for your app. Cross-platform, modular and still a one-liner.
 Encrypt, Encode and have full control over hardcoded / dynamic settings.</Summary>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseUrl>https://github.com/Nucs/JsonSettings/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/Nucs/JsonSettings</PackageProjectUrl>
-    <PackageIconUrl>http://i.imgur.com/GQ6RiXB.png</PackageIconUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/zerodev1200/JsonSettings</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Easiest way you'll ever write settings for your app. Cross-platform, modular and still a one-liner.
 Encrypt, Encode and have full control over hardcoded / dynamic settings.</Description>
@@ -21,7 +21,12 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.</Descri
     <NeutralLanguage />
     <SignAssembly>false</SignAssembly>
     <Copyright></Copyright>
-  </PropertyGroup>
+    <PackageId>nucs.JsonSettings.Fork</PackageId>
+    <Product>nucs.JsonSettings.Fork</Product>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;</DefineConstants>
@@ -35,10 +40,22 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.</Descri
     <Compile Remove="Autosave\**" />
     <EmbeddedResource Remove="Autosave\**" />
     <None Remove="Autosave\**" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 

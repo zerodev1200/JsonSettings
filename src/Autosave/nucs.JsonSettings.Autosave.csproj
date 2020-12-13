@@ -11,15 +11,17 @@
 	<Summary>Easiest way you'll ever write settings for your app. Cross-platform, modular and still a one-liner.
 Encrypt, Encode and have full control over hardcoded / dynamic settings.</Summary>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseUrl>https://github.com/Nucs/JsonSettings/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Nucs/JsonSettings</PackageProjectUrl>
-    <PackageIconUrl>http://i.imgur.com/GQ6RiXB.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>An extension to JsonSettings that allows to wrap a class via transparent proxy.</Description>
     <PackageTags>nucs config file nlib settings json configuration preferences autosave</PackageTags>
     <NeutralLanguage />
     <SignAssembly>false</SignAssembly>
     <Copyright></Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -62,6 +64,17 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.</Summar
 
   <ItemGroup>
     <ProjectReference Include="..\nucs.JsonSettings.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

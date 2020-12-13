@@ -38,7 +38,7 @@ namespace nucs.JsonSettings.Inline {
                 try {
                     return ExecutingExe.Directory;
                 } catch {
-                    return new DirectoryInfo(Path.GetDirectoryName(Uri.UnescapeDataString(new UriBuilder(Assembly.GetEntryAssembly().CodeBase).Path)));
+                    return new DirectoryInfo(Path.GetDirectoryName(Uri.UnescapeDataString(new UriBuilder(Assembly.GetEntryAssembly().Location).Path)));
                 }
             }
         }

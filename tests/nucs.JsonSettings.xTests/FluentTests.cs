@@ -181,7 +181,7 @@ namespace nucs.JsonSettings.xTests {
 
         class FilenamelessSettings : JsonSettings {
             public override string FileName { get; set; } = null;
-            public string someprop { get; set; }
+            public string Someprop { get; set; }
 
             public FilenamelessSettings() { }
             public FilenamelessSettings(string fileName) : base(fileName) { }
