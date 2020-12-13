@@ -12,7 +12,7 @@
 Encrypt, Encode and have full control over hardcoded / dynamic settings.</Summary>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/zerodev1200/JsonSettings</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/zerodev1200/JsonSettings.Fork</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Easiest way you'll ever write settings for your app. Cross-platform, modular and still a one-liner.
