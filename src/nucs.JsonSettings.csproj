@@ -55,7 +55,7 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.11.0">
+		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
