@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Nucs/JsonSettings.Fork/blob/master/LICENSE)
 
 Easiest way you'll ever write settings for your app.<br>
-For .NetFramework4.7 4.8 .NETCore3.1 .NET5 
+For .NetFramework4.8 .NET6 .NET8 
 * Modular
 * One Liner
 * Abstract
