@@ -2,10 +2,10 @@
 
   <PropertyGroup>
 	<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <TargetFrameworks>net47;net48;net5.0;net6.0;netcoreapp3.1</TargetFrameworks>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
-    <Version>1.0.2</Version>
+    <TargetFrameworks>net8.0;net6.0;net48;</TargetFrameworks>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.3</Version>
     <Authors>z</Authors>
     <Company>z</Company>
 	<Summary>Easiest way you'll ever write settings for your app. Cross-platform, modular and still a one-liner.
@@ -35,19 +35,19 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.</Summar
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Castle.Core" Version="4.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Castle.Core" Version="5.1.1" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' Or '$(TargetFramework)' == 'net5.0' Or '$(TargetFramework)' == 'net6.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'net6.0'">
     <DefineConstants>$(DefineConstants);NETCORE;</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net48'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
     <DefineConstants>$(DefineConstants);WINDOWS;</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net48'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
     <DefineConstants>$(DefineConstants);NET;</DefineConstants>
   </PropertyGroup>
 

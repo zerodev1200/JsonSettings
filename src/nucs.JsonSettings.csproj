@@ -2,10 +2,10 @@
 
 	<PropertyGroup>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-		<TargetFrameworks>net47;net48;net5.0;net6.0;netcoreapp3.1</TargetFrameworks>
-		<AssemblyVersion>1.0.10.0</AssemblyVersion>
-		<FileVersion>1.0.10.0</FileVersion>
-		<Version>1.0.10</Version>
+		<TargetFrameworks>net8.0;net6.0;net48;</TargetFrameworks>
+		<AssemblyVersion>1.0.11.0</AssemblyVersion>
+		<FileVersion>1.0.11.0</FileVersion>
+		<Version>1.0.11</Version>
 		<Authors>z</Authors>
 		<Company></Company>
 		<Summary>
@@ -54,23 +54,23 @@ Encrypt, Encode and have full control over hardcoded / dynamic settings.
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.0.0">
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.8.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 
 
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' Or '$(TargetFramework)' == 'net5.0' Or '$(TargetFramework)' == 'net6.0'">
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'net6.0'">
 		<DefineConstants>$(DefineConstants);NETCORE;</DefineConstants>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net48'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
 		<DefineConstants>$(DefineConstants);WINDOWS;</DefineConstants>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net48'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
 		<DefineConstants>$(DefineConstants);NET;</DefineConstants>
 	</PropertyGroup>
 
